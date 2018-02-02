@@ -10,8 +10,7 @@ public class Digitalwatch extends JPanel implements Runnable {
     private Thread thread;
 
 
-
-    public Digitalwatch(){
+    public Digitalwatch() {
         label = new JLabel();
         label.setFont(font);
         this.add(label);
@@ -19,36 +18,36 @@ public class Digitalwatch extends JPanel implements Runnable {
     }
 
 
-    private void getDate(){
+    private void getDate() {
         label.setText(date.toString());
     }
 
-    public void start(){
-        if (thread == null){
+    public void start() {
+        if (thread == null) {
             thread = new Thread(this);
             thread.start();
         }
     }
 
 
-    public void run(){
-        while (true){
+    public void run() {
+        while (true) {
             date = new Date();
             getDate();
-            try{
+            try {
                 Thread.sleep(1000);
-            } catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
 
-    public static void main(String[]args){
+    public static void main(String[] args) {
         Digitalwatch c = new Digitalwatch();
         JFrame f = new JFrame();
         f.add(c);
-        f.setSize(350,80);
+        f.setSize(350, 80);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
